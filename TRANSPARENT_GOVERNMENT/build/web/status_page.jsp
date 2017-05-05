@@ -63,10 +63,21 @@
         <div class="header-cont">
             <div class="header">
                 <ul  class="side-nav" style="list-style: none;">
-                    <li><a href="gov_home.jsp">HOME</a></li>
-                    <li>
-                        <a href="spent_money.jsp" id="focusmeplease">SPENT MONEY</a>
-                    </li>
+                     <% if (session.getAttribute("type") != "payer") {
+                                out.print("<li>");
+                                out.print("<a href=\"gov_home.jsp\" id=\"focusmeplease\">HOME</a>");
+                                out.print("</li>");
+                                out.print("<li>");
+                                out.print("<a href=\"spent_money.jsp\" id=\"focusmeplease\">SPENT MONEY</a>");
+                                out.print("</li>");
+                            }
+                    else{
+                                    out.print("<li>");
+                                out.print("<a href=\"payer_home.jsp\" id=\"focusmeplease\">HOME</a>");
+                                out.print("</li>");
+                    
+                    }
+                        %>
                     <li>
                         <a href="change_password.jsp">CHANGE PASSWORD</a>
                     </li>

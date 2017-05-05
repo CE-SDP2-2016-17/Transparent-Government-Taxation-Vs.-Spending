@@ -118,11 +118,11 @@
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" name="np" placeholder="New Password">
+                    <input type="password" class="form-control" name="np" required placeholder="New Password">
                 </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" name="cnp" placeholder="Confirm Password">
+                    <input type="password" class="form-control" name="cnp" required placeholder="Confirm Password">
                 </div>
 
                 <button type="submit" class="float">Apply</button>

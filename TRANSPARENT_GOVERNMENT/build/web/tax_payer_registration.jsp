@@ -64,24 +64,24 @@
                 <div class="heading">
                     <div class="input-group input-group-lg"> 
                         <span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
-                        <input type="number" class="form-control" name="id" placeholder="Id"  >
+                        <input type="number" required class="form-control" name="id" placeholder="Id"  >
                     </div>
 
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" name="fnm" placeholder="First Name">
+                        <input type="text" required class="form-control" name="fnm" placeholder="First Name">
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" name="lnm" class="form-control" placeholder="Last Name"  >
+                        <input type="text" required name="lnm" class="form-control" placeholder="Last Name"  >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                        <input type="text" class="form-control" name="eid" placeholder="Email Address"  >
+                        <input type="text" required class="form-control" name="eid" placeholder="Email Address"  >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-user"></i></span>
-                        <select id="dropdown" name="city" style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="department">
+                        <select id="dropdown" required name="city" style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="department">
 
                             <option value="" style="color:black;" disabled selected>Select your City</option>
                             <%
@@ -103,24 +103,24 @@
 
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
-                        <input type="number" name="mno" class="form-control" placeholder="Mobile Number" >
+                        <input type="number" required name="mno" class="form-control" placeholder="Mobile Number" >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                        <input type="number" class="form-control" name="salary" placeholder="Salary" >
+                        <input type="number" required class="form-control" name="salary" placeholder="Salary" >
                     </div>
 
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" name="unm" class="form-control" placeholder="User Name"  >
+                        <input type="text" required name="unm" class="form-control" placeholder="User Name"  >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password" name="pwd" placeholder="Password"  class="form-control" >
+                        <input type="password" required name="pwd" placeholder="Password"  class="form-control" >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password" name="repwd" placeholder="Confirm Password" class="form-control"  >
+                        <input type="password" required name="repwd" placeholder="Confirm Password" class="form-control"  >
                     </div>
 
                     <button type="submit" class="float">Registration</button>

@@ -76,11 +76,11 @@
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
 
-                        <input type="text" class="form-control" name="user" placeholder="Username or email">
+                        <input type="text" class="form-control" name="user" required placeholder="Username or email">
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password" class="form-control" name="pwd" placeholder="Password">
+                        <input type="password" class="form-control" required name="pwd" placeholder="Password">
                     </div>
 
                     <button type="submit" class="float">Login</button>

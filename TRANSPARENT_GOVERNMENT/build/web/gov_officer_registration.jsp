@@ -62,24 +62,24 @@
                 <div class="heading">
                     <div class="input-group input-group-lg"> 
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-id-badge"></i></span>
-                        <input type="number" class="form-control" name="id" placeholder="Id"  >
+                        <input type="number" required class="form-control" name="id" placeholder="Id"  >
                     </div>
 
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" name="fnm" placeholder="First Name">
+                        <input type="text" required class="form-control" name="fnm" placeholder="First Name">
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-user"></i></span>
-                        <input type="text" name="lnm" class="form-control" placeholder="Last Name"  >
+                        <input type="text" name="lnm" required class="form-control" placeholder="Last Name"  >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-envelope-o"></i></span>
-                        <input type="text" class="form-control" name="eid" placeholder="Email Address"  >
+                        <input type="text" class="form-control" required name="eid" placeholder="Email Address"  >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-user"></i></span>
-                        <select id="dropdown" name="dep" style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="department">
+                        <select id="dropdown" name="dep" required style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="department">
                             
                             <option value="" disabled selected>Select your City</option>
                             <%
@@ -99,11 +99,11 @@
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-mobile"></i></span>
-                        <input type="number" name="mno" class="form-control" placeholder="Mobile Number" >
+                        <input type="number" name="mno" required class="form-control" placeholder="Mobile Number" >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-money"></i></span>
-                        <input type="number" class="form-control" name="salary" placeholder="Salary" >
+                        <input type="number" class="form-control" required name="salary" placeholder="Salary" >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-caret-square-o-down"></i></span>
@@ -119,21 +119,18 @@
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-user"></i></span>
-                        <input type="text" name="unm" class="form-control" placeholder="User Name"  >
+                        <input type="text" name="unm" required class="form-control" placeholder="User Name"  >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-lock"></i></span>
-                        <input type="password" name="pwd" style="color:black; " placeholder="Password"  class="form-control" >
+                        <input type="password" name="pwd" required style="color:black; " placeholder="Password"  class="form-control" >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-lock"></i></span>
-                        <input type="password" name="repwd" placeholder="Confirm Password" class="form-control"  >
+                        <input type="password" name="repwd" required placeholder="Confirm Password" class="form-control"  >
                     </div>
-
                     <button type="submit" class="float">Registration</button>
                 </div>
-
-
             </form>
         </div>
     </body>

@@ -60,11 +60,11 @@
                 <div class="heading">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                       <input type="text" class="form-control" name="usr" placeholder="Username or email">
+                        <input type="text" class="form-control" name="usr" placeholder="Username or email" required>
                     </div>
                     <div class="input-group input-group-lg">
-                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="number" class="form-control" name="mno" placeholder="Mobile Number">
+                        <span class="input-group-addon"><i class="fa fa-mobile"></i></span>
+                        <input type="number" class="form-control" name="mno" placeholder="Mobile Number" required>
                     </div>
                     <button type="submit" class="float">APPLY</button>
             </form>

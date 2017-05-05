@@ -83,7 +83,7 @@
                 <div class="heading">
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-user"></i></span>
-                        <select id="dropdown" name="ttype" style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="tax type">
+                        <select id="dropdown" required name="ttype" style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="tax type">
                             <option value="" style="color:black;" disabled selected>Select TAX TYPE</option>
                             <option value="individual">individual</option>
                             <option value="business">business</option>
@@ -91,11 +91,11 @@
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                        <input type="number" class="form-control" name="amt" placeholder="Amount" >
+                        <input type="number" required class="form-control" name="amt" placeholder="Amount" >
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i style="color:black;" class="fa fa-user"></i></span>
-                        <select id="dropdown" name="city" style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="department">
+                        <select id="dropdown" name="city" required style="background-color: gray; border-color: gray; color:black;" class="form-control" placeholder="department">
 
                             <option value="" disabled selected>Select your City</option>
                             <%
@@ -116,7 +116,7 @@
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input type="text" class="form-control" name="date" placeholder="DD/MM/YYYY">
+                        <input type="text" class="form-control" required name="date" placeholder="DD/MM/YYYY">
                     </div>
                     <button type="submit" class="float">Pay</button>
 

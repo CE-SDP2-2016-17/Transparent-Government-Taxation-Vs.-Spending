@@ -1,0 +1,3 @@
+For this project we have use oracle database.
+For creating database first create database with name TRANSPARENT_GOVERNANCE.
+After that import export.sql into database.

@@ -48,110 +48,115 @@ public class PayTaxServlet extends HttpServlet {
             String t = request.getParameter("ttype");
             String a = request.getParameter("amt");
             out.println(a);
-            String c = request.getParameter("city");
-            String d = request.getParameter("date");
-            session.setAttribute("ttype", t);
-            session.setAttribute("amt", a);
-            session.setAttribute("city", c);
-            session.setAttribute("date", d);
+            int amount = Integer.valueOf(a);
+            out.print(amount);
+            if (amount > 0) {
+                String c = request.getParameter("city");
+                String d = request.getParameter("date");
+                session.setAttribute("ttype", t);
+                session.setAttribute("amt", a);
+                session.setAttribute("city", c);
+                session.setAttribute("date", d);
 
-            PaymentOrder order = new PaymentOrder();
-            //  out.println("TODO output your page here. You may use following sample code. ");
-            order.setName("bhindi");
-            order.setEmail("bhingaradiyavivek@gmail.com");
-            order.setPhone("7046926618");
-            order.setCurrency("INR");
-            order.setAmount(Double.parseDouble(a));
-            order.setDescription("This is a test transaction.");
-            // out.println("TODO output your page here. You may use following sample code. ");
-            order.setRedirectUrl("http://localhost:8085/transparent_government/payment_done");
+                PaymentOrder order = new PaymentOrder();
+                //  out.println("TODO output your page here. You may use following sample code. ");
+                order.setName("bhindi");
+                order.setEmail("bhingaradiyavivek@gmail.com");
+                order.setPhone("7046926618");
+                order.setCurrency("INR");
+                order.setAmount(Double.parseDouble(a));
+                order.setDescription("This is a test transaction.");
+                // out.println("TODO output your page here. You may use following sample code. ");
+                order.setRedirectUrl("http://localhost:8085/transparent_government/payment_done");
 
-            char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-            StringBuilder sb = new StringBuilder();
-            Random random = new Random();
-            for (int i = 0; i < 5; i++) {
-                char v = chars[random.nextInt(chars.length)];
-                sb.append(v);
-            }
-            String output = sb.toString();
-            order.setTransactionId(output);
-            session.setAttribute("tid", output);
-            Instamojo api = null;
+                char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+                StringBuilder sb = new StringBuilder();
+                Random random = new Random();
+                for (int i = 0; i < 5; i++) {
+                    char v = chars[random.nextInt(chars.length)];
+                    sb.append(v);
+                }
+                String output = sb.toString();
+                order.setTransactionId(output);
+                session.setAttribute("tid", output);
+                Instamojo api = null;
 
-            // gets the reference to the instamojo api
-            api = InstamojoImpl.getApi("flRJhnWSVIR2j5QhYddwPxKfifc5cKhr5pHFNdkV", "JFLRMO0GwWnQGIOdk28Q6GuUedIU5caxx70AMzWzoQStf9RstR9tzTBetmSrpksAV9Xqv2uK62hncJhE4JTIvxUQaOvfhnzprqplqknYLaFewOEt9dt9tK1ZqEMXWdtx", "https://test.instamojo.com/v2/", "https://test.instamojo.com/oauth2/token/");
+                // gets the reference to the instamojo api
+                api = InstamojoImpl.getApi("flRJhnWSVIR2j5QhYddwPxKfifc5cKhr5pHFNdkV", "JFLRMO0GwWnQGIOdk28Q6GuUedIU5caxx70AMzWzoQStf9RstR9tzTBetmSrpksAV9Xqv2uK62hncJhE4JTIvxUQaOvfhnzprqplqknYLaFewOEt9dt9tK1ZqEMXWdtx", "https://test.instamojo.com/v2/", "https://test.instamojo.com/oauth2/token/");
 
-            boolean isOrderValid = order.validate();
-            if (isOrderValid) {
-                JSONObject obj = null;
-                String link = null;
-
-                try {
-                    CreatePaymentOrderResponse createPaymentOrderResponse = api.createNewPaymentOrder(order);
+                boolean isOrderValid = order.validate();
+                if (isOrderValid) {
+                    JSONObject obj = null;
+                    String link = null;
 
                     try {
-                        obj = new JSONObject(createPaymentOrderResponse.getJsonResponse());
-                    } catch (JSONException ex) {
-                        Logger.getLogger(PayTaxServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    try {
-                        link = obj.getJSONObject("payment_options").getString("payment_url");
-                    } catch (JSONException ex) {
-                        Logger.getLogger(PayTaxServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                        CreatePaymentOrderResponse createPaymentOrderResponse = api.createNewPaymentOrder(order);
 
-                    //out.println("TODO output your page here. You may use following sample code. ");
-                    //String link = order.getResourceUri();
-                    // print the status of the payment order.
-                    System.out.println(link);
-                    response.sendRedirect(link);
-                    System.out.println(createPaymentOrderResponse.getPaymentOrder().getStatus());
-                } catch (InvalidPaymentOrderException e) {
+                        try {
+                            obj = new JSONObject(createPaymentOrderResponse.getJsonResponse());
+                        } catch (JSONException ex) {
+                            Logger.getLogger(PayTaxServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        try {
+                            link = obj.getJSONObject("payment_options").getString("payment_url");
+                        } catch (JSONException ex) {
+                            Logger.getLogger(PayTaxServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
+                        //out.println("TODO output your page here. You may use following sample code. ");
+                        //String link = order.getResourceUri();
+                        // print the status of the payment order.
+                        System.out.println(link);
+                        response.sendRedirect(link);
+                        System.out.println(createPaymentOrderResponse.getPaymentOrder().getStatus());
+                    } catch (InvalidPaymentOrderException e) {
+
+                        if (order.isTransactionIdInvalid()) {
+                            System.out.println("Transaction id is invalid. This is mostly due to duplicate  transaction id.");
+                        }
+                        if (order.isCurrencyInvalid()) {
+                            System.out.println("Currency is invalid.");
+                        }
+                    } catch (ConnectionException e) {
+
+                    }
+                } else {
+                    // inform validation errors to the user.
                     if (order.isTransactionIdInvalid()) {
-                        System.out.println("Transaction id is invalid. This is mostly due to duplicate  transaction id.");
+                        System.out.println("Transaction id is invalid.");
+                    }
+                    if (order.isAmountInvalid()) {
+                        System.out.println("Amount can not be less than 9.00.");
                     }
                     if (order.isCurrencyInvalid()) {
-                        System.out.println("Currency is invalid.");
+                        System.out.println("Please provide the currency.");
                     }
-                } catch (ConnectionException e) {
+                    if (order.isDescriptionInvalid()) {
+                        System.out.println("Description can not be greater than 255 characters.");
+                    }
+                    if (order.isEmailInvalid()) {
+                        System.out.println("Please provide valid Email Address.");
+                    }
+                    if (order.isNameInvalid()) {
+                        System.out.println("Name can not be greater than 100 characters.");
+                    }
+                    if (order.isPhoneInvalid()) {
+                        System.out.println("Phone is invalid.");
+                    }
+                    if (order.isRedirectUrlInvalid()) {
+                        System.out.println("Please provide valid Redirect url.");
+                    }
 
+                    if (order.isWebhookInvalid()) {
+                        System.out.println("Provide a valid webhook url");
+                    }
                 }
+
+                //  out.println("</br><a href='/sign_in.jsp'>login page</a>");
             } else {
-                // inform validation errors to the user.
-                if (order.isTransactionIdInvalid()) {
-                    System.out.println("Transaction id is invalid.");
-                }
-                if (order.isAmountInvalid()) {
-                    System.out.println("Amount can not be less than 9.00.");
-                }
-                if (order.isCurrencyInvalid()) {
-                    System.out.println("Please provide the currency.");
-                }
-                if (order.isDescriptionInvalid()) {
-                    System.out.println("Description can not be greater than 255 characters.");
-                }
-                if (order.isEmailInvalid()) {
-                    System.out.println("Please provide valid Email Address.");
-                }
-                if (order.isNameInvalid()) {
-                    System.out.println("Name can not be greater than 100 characters.");
-                }
-                if (order.isPhoneInvalid()) {
-                    System.out.println("Phone is invalid.");
-                }
-                if (order.isRedirectUrlInvalid()) {
-                    System.out.println("Please provide valid Redirect url.");
-                }
-
-                if (order.isWebhookInvalid()) {
-                    System.out.println("Provide a valid webhook url");
-                }
+                response.sendRedirect("status_page.jsp?status=amount must be greater than zero");
             }
-
-            //  out.println("</br><a href='/sign_in.jsp'>login page</a>");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

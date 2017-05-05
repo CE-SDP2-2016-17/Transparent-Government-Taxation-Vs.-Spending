@@ -53,10 +53,10 @@ public class SpentMoneyServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession(false);
             String a = request.getParameter("amt");
+            
             int amount = Integer.valueOf(a);
             out.print(amount);
-            out.println("<br>");
-            
+            if(amount>0){
             out.print(Integer.valueOf(session.getAttribute("budget").toString()));
             if (amount < Integer.valueOf(session.getAttribute("budget").toString())) {
                 String ds = request.getParameter("des");
@@ -140,6 +140,9 @@ public class SpentMoneyServlet extends HttpServlet {
             } else {
                 //out.print("skjfdsbf");
                 response.sendRedirect("status_page.jsp?status=entered amount greater than approved amount");
+            }}
+            else{
+            response.sendRedirect("status_page.jsp?status=entered amount greater than zero");
             }
 
         }

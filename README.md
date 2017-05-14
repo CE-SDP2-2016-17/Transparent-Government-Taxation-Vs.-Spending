@@ -1,10 +1,7 @@
 # Transparent-Government-Taxation-Vs.-Spending
 
-Project Title:
-								Transparent Government : Taxation Vs. Spending
 
-		This project is made in Java using Jsp and Servlet and Oracle Database. This project is used to bring transparency in governance. By use of this 
-project tax payers can pay tax online and government officer spend that money to verious department and citizen can see all this transaction online via charts.
+		This project is made in Java using Jsp and Servlet and Oracle Database. This project is used to bring transparency in governance. By use of this project tax payers can pay tax online and government officer spend that money to verious department and citizen can see all this transaction online via charts.
 
 Getting Started
 

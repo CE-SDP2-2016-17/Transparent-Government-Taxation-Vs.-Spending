@@ -5,3 +5,8 @@ os: linux
 files:
   - source: ./updates.txt
     destination: /tmp/
+    
+hooks:
+  ApplicationStart:
+    - location: /install.sh
+      runas : root

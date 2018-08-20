@@ -1,2 +1,0 @@
-This is a testing purpose file for git.
-Testing 1
